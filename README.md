@@ -1,7 +1,4 @@
 # 🧾 SkillSwap - Peer-to-Peer Microlearning Platform
-
-
-
 SkillSwap is a revolutionary web application that enables users to **exchange skills instead of money**. 
 It's a peer-to-peer microlearning platform where knowledge becomes currency, making education accessible to everyone.
 
@@ -83,7 +80,6 @@ It's a peer-to-peer microlearning platform where knowledge becomes currency, mak
 ### **Deployment & Tools**
 - **Vercel** - Frontend deployment and hosting
 - **MongoDB Atlas** - Cloud database hosting
-- **Cloudinary** - Image and media management
 
 ## 📦 **Installation & Setup**
 
@@ -142,73 +138,8 @@ npm start
 - `PUT /api/sessions/:id/accept` - Accept session request
 - `POST /api/sessions/:id/rate` - Rate completed session
 
-## 🤝 **Contributing**
 
-We welcome contributions from the community! Here's how you can help:
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit your changes**: `git commit -m 'Add amazing feature'`
-4. **Push to the branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
 
-### **Development Guidelines**
-- Follow ES6+ JavaScript standards
-- Use meaningful commit messages
-- Add comments for complex logic
-- Test your changes thoroughly
-- Update documentation as needed
 
-## 📝 **License**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🌟 **Roadmap**
-
-### **Phase 1** ✅
-- [x] Basic user authentication
-- [x] Profile creation and skill management
-- [x] Simple matchmaking algorithm
-- [x] Session request system
-
-### **Phase 2** 🚧
-- [ ] Real-time chat integration
-- [ ] Video call integration
-- [ ] Advanced matching algorithms
-- [ ] Mobile responsive design
-
-### **Phase 3** 📋
-- [ ] Mobile app (React Native)
-- [ ] Group learning sessions
-- [ ] Skill verification system
-- [ ] Learning path recommendations
-- [ ] Achievement badges and gamification
-
-## 📊 **Platform Statistics & Impact**
-
-Based on the live platform data:
-- **Active User Base**: Growing community with engaged learners
-- **Study Groups**: 5+ active groups covering diverse topics from React to Data Science
-- **Skill Exchange Success**: Users like Alex Johnson showing 12 courses enrolled, 8 study groups participated, and 24 resources shared
-- **Community Engagement**: High participation rates with intermediate to advanced level groups
-- **Multi-Modal Learning**: Supporting both online and in-person group formats
-
-## 🙏 **Acknowledgments**
-
-- Thanks to all early adopters and beta testers
-- Special thanks to the open-source community
-- Inspired by the belief that everyone has something valuable to teach
-
-## 📞 **Contact & Support**
-
-- **Live Platform**: [skillshare-app.vercel.app](https://skillshare-app.vercel.app)
-- **User Profiles**: [skillshare-app.vercel.app/profile](https://skillshare-app.vercel.app/profile)
-- **Study Groups**: [skillshare-app.vercel.app/groups](https://skillshare-app.vercel.app/groups)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/skillswap-platform/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/skillswap-platform/discussions)
-
----
-
-**Made with ❤️ by the SkillSwap Team**
-
-*Empowering peer-to-peer learning, one skill exchange at a time.*
