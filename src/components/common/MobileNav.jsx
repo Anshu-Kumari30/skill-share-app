@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, User, Users, MessageCircle, X } from 'lucide-react';
+import { BookOpen, User, Users, MessageCircle, X, LogOut, Settings } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
-const MobileNav = ({ isOpen, onClose }) => {
+const MobileNav = ({ isOpen, onClose, onLogout }) => {
   const location = useLocation();
+  const { user } = useAuth();
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -16,7 +18,13 @@ const MobileNav = ({ isOpen, onClose }) => {
       <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
       <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl">
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-semibold">Menu</h2>
+          <div className="flex items-center space-x-3">
+            <span className="text-2xl">{user?.avatar || '👤'}</span>
+            <div>
+              <h2 className="text-sm font-semibold text-gray-900">{user?.name}</h2>
+              <p className="text-xs text-gray-500">{user?.email}</p>
+            </div>
+          </div>
           <button onClick={onClose} className="p-2">
             <X className="h-5 w-5" />
           </button>
@@ -71,6 +79,28 @@ const MobileNav = ({ isOpen, onClose }) => {
             <User className="h-4 w-4 mr-2" />
             Profile
           </Link>
+
+          <hr className="my-4 border-gray-200" />
+
+          <Link
+            to="/settings"
+            onClick={onClose}
+            className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            <Settings className="h-4 w-4 mr-2" />
+            Settings
+          </Link>
+
+          <button
+            onClick={() => {
+              onClose();
+              onLogout();
+            }}
+            className="flex items-center w-full px-3 py-2 rounded-md text-sm font-medium text-red-600 hover:bg-red-50"
+          >
+            <LogOut className="h-4 w-4 mr-2" />
+            Logout
+          </button>
         </nav>
       </div>
     </div>

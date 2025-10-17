@@ -18,43 +18,87 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Mock user data for development
+  // Check for existing user session on mount
   useEffect(() => {
-    // Simulate loading user data
+    // Simulate checking for existing session
     setTimeout(() => {
-      const mockUser = {
-        id: 1,
-        name: 'Alex Johnson',
-        email: 'alex@example.com',
-        avatar: '👨‍💻',
-        role: 'student'
-      };
-      
-      setUser(mockUser);
-      setIsAuthenticated(true);
+      // Check if we have a "logged in" user in memory
+      // In a real app, you'd check a token or session
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   const login = async (email, password) => {
     setLoading(true);
     try {
-      // Mock login API call
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Mock validation
+      if (!email || !password) {
+        throw new Error('Email and password are required');
+      }
+
+      // Mock login - in real app, this would call your backend
       const mockUser = {
         id: 1,
-        name: 'Alex Johnson',
+        name: email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1),
         email: email,
         avatar: '👨‍💻',
-        role: 'student'
+        role: 'student',
+        bio: '',
+        location: '',
+        website: '',
+        university: '',
+        major: ''
       };
       
       setUser(mockUser);
       setIsAuthenticated(true);
+      setLoading(false);
       return { success: true };
     } catch (error) {
-      return { success: false, error: 'Login failed' };
-    } finally {
       setLoading(false);
+      return { success: false, error: error.message || 'Login failed' };
+    }
+  };
+
+  const signup = async (name, email, password) => {
+    setLoading(true);
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Mock validation
+      if (!name || !email || !password) {
+        throw new Error('All fields are required');
+      }
+
+      if (password.length < 6) {
+        throw new Error('Password must be at least 6 characters');
+      }
+
+      // Mock signup - in real app, this would call your backend
+      const mockUser = {
+        id: Date.now(), // Simple unique ID
+        name: name,
+        email: email,
+        avatar: '👨‍💻',
+        role: 'student',
+        bio: '',
+        location: '',
+        website: '',
+        university: '',
+        major: ''
+      };
+      
+      setUser(mockUser);
+      setIsAuthenticated(true);
+      setLoading(false);
+      return { success: true };
+    } catch (error) {
+      setLoading(false);
+      return { success: false, error: error.message || 'Signup failed' };
     }
   };
 
@@ -63,25 +107,24 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
-  const signup = async (name, email, password) => {
+  const updateProfile = async (profileData) => {
     setLoading(true);
     try {
-      // Mock signup API call
-      const mockUser = {
-        id: 1,
-        name: name,
-        email: email,
-        avatar: '👨‍💻',
-        role: 'student'
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Update user with new profile data
+      const updatedUser = {
+        ...user,
+        ...profileData
       };
       
-      setUser(mockUser);
-      setIsAuthenticated(true);
+      setUser(updatedUser);
+      setLoading(false);
       return { success: true };
     } catch (error) {
-      return { success: false, error: 'Signup failed' };
-    } finally {
       setLoading(false);
+      return { success: false, error: error.message || 'Update failed' };
     }
   };
 
@@ -91,7 +134,8 @@ export const AuthProvider = ({ children }) => {
     loading,
     login,
     logout,
-    signup
+    signup,
+    updateProfile
   };
 
   return (
