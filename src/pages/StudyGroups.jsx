@@ -25,7 +25,7 @@ const StudyGroupsPage = () => {
     nextSession: ''
   });
 
-  // Mock data for study groups
+  
   const mockStudyGroups = [
     {
       id: 1,
